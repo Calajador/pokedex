@@ -1,0 +1,10 @@
+htm,
+body {
+  padding: 20px;
+  background-color: darkgrey;
+}
+
+h1 {
+  font-size: 30px;
+  color: aliceblue;
+}
