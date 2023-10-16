@@ -31,7 +31,8 @@ export class ConsumiblesService {
       element.name = element.name.toLowerCase();
     });
     try {
-      const consumible = await this.consumibleModel.create(createConsumibleDto);
+      const consumible =
+        await this.consumibleModel.insertMany(createConsumibleDto);
       return consumible;
     } catch (error) {
       this.handleExceptions(error);
