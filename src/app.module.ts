@@ -6,6 +6,7 @@ import { PokemonModule } from './pokemon/pokemon.module';
 import { CommonModule } from './common/common.module';
 import { TrainersModule } from './trainers/trainers.module';
 import { Trainer, TrainerSchema } from './trainers/entities/trainer.entity';
+import { GymsModule } from './gyms/gyms.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { Trainer, TrainerSchema } from './trainers/entities/trainer.entity';
     CommonModule,
     PokemonModule,
     TrainersModule,
+    GymsModule,
   ],
 })
 export class AppModule {}

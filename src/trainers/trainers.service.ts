@@ -26,8 +26,13 @@ export class TrainersService {
     }
   }
 
-  findAll() {
-    return `This action returns all trainers`;
+  async findAll() {
+    try {
+      const trainer = await this.trainerModel.find();
+      return trainer;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findOne(id: string) {

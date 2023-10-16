@@ -26,3 +26,7 @@ export const TrainerSchema = SchemaFactory.createForClass(Trainer);
 TrainerSchema.pre('findOne', function () {
   this.populate('pokemons');
 });
+
+TrainerSchema.pre('find', function () {
+  this.populate('pokemons');
+});
