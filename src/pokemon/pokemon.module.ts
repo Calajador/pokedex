@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { PokemonService } from './pokemon.service';
 import { PokemonController } from './pokemon.controller';
 import { Pokemon, PokemonSchema } from './entities/pokemon.entity';
+import { Trainer, TrainerSchema } from 'src/trainers/entities/trainer.entity';
 
 @Module({
   controllers: [PokemonController],
@@ -12,6 +13,10 @@ import { Pokemon, PokemonSchema } from './entities/pokemon.entity';
       {
         name: Pokemon.name,
         schema: PokemonSchema,
+      },
+      {
+        name: Trainer.name,
+        schema: TrainerSchema,
       },
     ]),
   ],

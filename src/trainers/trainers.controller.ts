@@ -32,7 +32,10 @@ export class TrainersController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTrainerDto: UpdateTrainerDto) {
+  update(
+    @Param('id', ParseMongoIdPipe) id: string,
+    @Body() updateTrainerDto: UpdateTrainerDto,
+  ) {
     return this.trainersService.update(id, updateTrainerDto);
   }
 

@@ -10,12 +10,15 @@ import { UpdatePokemonDto } from './dto/update-pokemon.dto';
 import { Model, isValidObjectId } from 'mongoose';
 import { Pokemon } from './entities/pokemon.entity';
 import { PaginationDTO } from '../common/dtos/pagination.dto';
+import { Trainer } from 'src/trainers/entities/trainer.entity';
 
 @Injectable()
 export class PokemonService {
   constructor(
     @InjectModel(Pokemon.name)
     private readonly pokemonModel: Model<Pokemon>,
+    @InjectModel(Trainer.name)
+    private readonly trainerModel: Model<Trainer>,
   ) {}
 
   async create(createPokemonDto: CreatePokemonDto) {
@@ -91,6 +94,12 @@ export class PokemonService {
     if (deletedCount === 0) {
       throw new NotFoundException(`Pokemon not found with this ID ${id}`);
     }
+    //const trainers = await this.trainerModel.find({pokemons: { $in: id }})
+    await this.trainerModel.updateMany(
+      {},
+      { $pull: { pokemons: id } },
+      { new: true },
+    );
 
     return;
   }

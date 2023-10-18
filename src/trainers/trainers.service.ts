@@ -46,8 +46,20 @@ export class TrainersService {
     return trainer;
   }
 
-  update(id: string, updateTrainerDto: UpdateTrainerDto) {
-    return `This action updates a #${id} trainer`;
+  async update(id: string, updateTrainerDto: UpdateTrainerDto) {
+    if (updateTrainerDto.name) {
+      updateTrainerDto.name + updateTrainerDto.name.toLowerCase();
+    }
+
+    const updateTrainer = this.trainerModel.findByIdAndUpdate(
+      id,
+      updateTrainerDto,
+      {
+        new: true,
+      },
+    );
+
+    return updateTrainer;
   }
 
   remove(id: string) {
